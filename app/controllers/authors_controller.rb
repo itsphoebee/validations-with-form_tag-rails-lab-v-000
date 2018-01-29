@@ -9,7 +9,7 @@ class AuthorsController < ApplicationController
 
   def create
     @author = Author.create(author_params)
-    if @author   
+    if @author
       redirect_to author_path(@author)
     else
       render :new
@@ -19,6 +19,11 @@ class AuthorsController < ApplicationController
   def update
     @author = Author.find(params[:id])
     @author.update(author_params)
+    if @author 
+      redirect_to author_path(@author)
+    else
+      render :edit
+    end
   end
   private
 
